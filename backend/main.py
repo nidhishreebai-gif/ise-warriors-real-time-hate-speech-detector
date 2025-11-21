@@ -22,9 +22,9 @@ def check_message(text):
     for word in hate_words:
         if word in text_lower:
             return "hate_speech"
-    return "safe"
+    return "not_hate_speech"
 
-@app.post("/predict")
+@app.post("/check")
 def predict(msg: Message):
     result = check_message(msg.text)
-    return {"status": result}
+    return {"message": result} 
